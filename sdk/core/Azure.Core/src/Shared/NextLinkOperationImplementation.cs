@@ -150,20 +150,7 @@ namespace Azure.Core
         }
 
         public string GetOperationId()
-        {
-            var lroDetails = new Dictionary<string, string?>()
-            {
-                ["HeaderSource"] = _headerSource.ToString(),
-                ["NextRequestUri"] = _nextRequestUri,
-                ["InitialUri"] = _startRequestUri.AbsoluteUri,
-                ["RequestMethod"] = _requestMethod.ToString(),
-                ["OriginalResponseHasLocation"] = _originalResponseHasLocation.ToString(),
-                ["LastKnownLocation"] = _lastKnownLocation,
-                ["FinalStateVia"] = _finalStateVia.ToString()
-            };
-            var lroData = BinaryData.FromObjectAsJson(lroDetails);
-            return Convert.ToBase64String(lroData.ToArray());
-        }
+            => GetOperationId(_requestMethod, _startRequestUri, _nextRequestUri, _headerSource, _originalResponseHasLocation, _lastKnownLocation, _finalStateVia);
 
         public async ValueTask<OperationState> UpdateStateAsync(bool async, CancellationToken cancellationToken)
         {
