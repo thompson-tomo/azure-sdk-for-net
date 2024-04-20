@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>$(RequiredTargetFrameworks);net6.0</TargetFrameworks>
+    <TargetFrameworks>$(RequiredTargetFrameworks)</TargetFrameworks>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyTitle>Microsoft Azure.Storage.Internal.Avro client library</AssemblyTitle>
@@ -8,7 +8,7 @@
     <GenerateAPIListing>false</GenerateAPIListing>
   </PropertyGroup>
   <!-- These packages are included as part net6.0; the external references are not needed. -->
-  <ItemGroup Condition="'$(TargetFramework)' != 'net6.0'">
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
     <PackageReference Include="System.Text.Json" />
   </ItemGroup>
     <ItemGroup>

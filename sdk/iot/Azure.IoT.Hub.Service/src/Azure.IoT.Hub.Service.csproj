@@ -4,10 +4,6 @@
     <TargetFrameworks>$(RequiredTargetFrameworks)</TargetFrameworks>
     <EnableBannedApiAnalyzers>false</EnableBannedApiAnalyzers>
     <IncludeOperationsSharedSource>true</IncludeOperationsSharedSource>
-  </PropertyGroup>
-
-  <!-- Nuget properties -->
-  <PropertyGroup>
     <PackageTags>IoT;PnP;$(PackageCommonTags)</PackageTags>
     <DisableEnhancedAnalysis>true</DisableEnhancedAnalysis>
     <Description>SDK for the Azure IoT Hub service</Description>
@@ -19,7 +15,7 @@
   </ItemGroup>
 
   <!-- These packages are included as part net6.0; the external references are not needed. -->
-  <ItemGroup Condition="'$(TargetFramework)' != 'net6.0'">
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
     <PackageReference Include="System.Text.Json" />
   </ItemGroup>
 

@@ -113,10 +113,8 @@ namespace Azure.Storage
         /// <returns>True if using IP Endpoint style.</returns>
         public static bool IsHostIPEndPointStyle(this Uri uri) =>
             (!string.IsNullOrEmpty(uri.Host) &&
-#if NET6_0_OR_GREATER
+#if NET6_0_OR_GREATER || NETCOREAPP3_1
             uri.Host.Contains('.', StringComparison.InvariantCulture) &&
-#elif NETCOREAPP3_1
-            uri.Host.Contains(".", StringComparison.InvariantCulture) &&
 #else
             uri.Host.Contains(".") &&
 #endif

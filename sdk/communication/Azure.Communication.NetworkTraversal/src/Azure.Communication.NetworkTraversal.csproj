@@ -16,11 +16,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Azure.Communication.Common" />
     <PackageReference Include="Azure.Core" />
   </ItemGroup>
 
   <!-- These packages are included as part net6.0; the external references are not needed. -->
-  <ItemGroup Condition="'$(TargetFramework)' != 'net6.0'">
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
     <PackageReference Include="System.Text.Json" />
   </ItemGroup>
 
@@ -32,9 +33,6 @@
     <Compile Include="$(AzureCoreSharedSources)AzureResourceProviderNamespaceAttribute.cs" LinkBase="Shared" />
     <Compile Include="$(AzureCoreSharedSources)ArrayBufferWriter.cs" LinkBase="Shared" />
     <Compile Include="$(AzureCoreSharedSources)ConnectionString.cs" LinkBase="Shared" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Azure.Communication.Common" />
   </ItemGroup>
 
 </Project>

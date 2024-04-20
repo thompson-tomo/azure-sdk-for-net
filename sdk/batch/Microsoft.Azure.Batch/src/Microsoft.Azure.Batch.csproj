@@ -11,15 +11,12 @@
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
     <SignAssembly>true</SignAssembly>
     <NoWarn>$(NoWarn);1591;NU5105;CA1308;CA1825;CA2237</NoWarn>  <!-- Remove CA1825 supression here when we deprecate net452 -->
-  </PropertyGroup>
-
-  <PropertyGroup>
     <TargetFrameworks>$(RequiredTargetFrameworks)</TargetFrameworks>
     <PackageReleaseNotes>For detailed release notes, see: https://aka.ms/batch-net-dataplane-changelog </PackageReleaseNotes>
   </PropertyGroup>
 
   <!-- These packages are included as part net6.0; the external references are not needed. -->
-  <ItemGroup Condition="'$(TargetFramework)' != 'net6.0'">
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
     <PackageReference Include="System.Text.Encodings.Web" />
   </ItemGroup>
 

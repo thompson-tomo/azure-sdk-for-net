@@ -7,7 +7,7 @@
     <!-- TODO: Remove this condition from ApiCompatVersion after we release our next stable. Need to disable this because added new target framwork. -->
     <ApiCompatVersion Condition="'$(TargetFramework)' != 'net6.0'">1.1.0</ApiCompatVersion>
     <PackageTags>Azure Monitor OpenTelemetry Exporter Distro ApplicationInsights</PackageTags>
-    <TargetFrameworks>net6.0;$(RequiredTargetFrameworks)</TargetFrameworks>
+    <TargetFrameworks>$(RequiredTargetFrameworks)</TargetFrameworks>
     <IncludeOperationsSharedSource>true</IncludeOperationsSharedSource>
     <NoWarn>SA1636</NoWarn>
     <!-- this is temporary. will remove in future PR. -->

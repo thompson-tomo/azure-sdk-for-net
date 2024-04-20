@@ -6,9 +6,9 @@
     <!--The ApiCompatVersion is managed automatically and should not generally be modified manually.-->
     <ApiCompatVersion>1.0.0</ApiCompatVersion>
     <PackageTags>Microsoft Azure Identity Broker;$(PackageCommonTags)</PackageTags>
-    <TargetFrameworks Condition="$([MSBuild]::IsOsPlatform('Windows'))">$(RequiredTargetFrameworks);net462;net6.0</TargetFrameworks>
-    <TargetFrameworks Condition="$([MSBuild]::IsOsPlatform('OSX'))">$(RequiredTargetFrameworks);net6.0</TargetFrameworks>
-    <TargetFrameworks Condition="$([MSBuild]::IsOsPlatform('Linux')) ">$(RequiredTargetFrameworks);net6.0</TargetFrameworks>
+    <TargetFrameworks Condition="$([MSBuild]::IsOsPlatform('Windows'))">$(RequiredTargetFrameworks);net462</TargetFrameworks>
+    <TargetFrameworks Condition="$([MSBuild]::IsOsPlatform('OSX'))">$(RequiredTargetFrameworks)</TargetFrameworks>
+    <TargetFrameworks Condition="$([MSBuild]::IsOsPlatform('Linux')) ">$(RequiredTargetFrameworks)</TargetFrameworks>
     <NoWarn>$(NoWarn);3021</NoWarn>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
@@ -16,12 +16,16 @@
     <!-- <PackageReference Include="Azure.Core" /> -->
     <!-- <PackageReference Include="Azure.Identity" /> -->
     <ProjectReference Include="..\..\Azure.Identity\src\Azure.Identity.csproj" />
-    <PackageReference Include="System.Memory" Condition="'$(TargetFramework)' != 'net6.0'" />
-    <PackageReference Include="System.Text.Json" Condition="'$(TargetFramework)' != 'net6.0'" /> />
     <PackageReference Include="System.Threading.Tasks.Extensions" />
     <PackageReference Include="Microsoft.Identity.Client" />
     <PackageReference Include="Microsoft.Identity.Client.Extensions.Msal" />
     <PackageReference Include="System.Security.Cryptography.ProtectedData" />
     <PackageReference Include="Microsoft.Identity.Client.Broker" />
   </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net462 or '$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="System.Memory" />
+    <PackageReference Include="System.Text.Json" />
+  </ItemGroup>
+
 </Project>

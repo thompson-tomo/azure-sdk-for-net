@@ -6,7 +6,7 @@
     <!--The ApiCompatVersion is managed automatically and should not generally be modified manually.-->
     <ApiCompatVersion>1.2.0</ApiCompatVersion>
     <PackageTags>Azure, WebPubSub</PackageTags>
-    <RequiredTargetFrameworks>netcoreapp3.1</RequiredTargetFrameworks>
+    <RequiredTargetFrameworks>netcoreapp3.1;net6.0</RequiredTargetFrameworks>
     <TargetFrameworks>$(RequiredTargetFrameworks)</TargetFrameworks>
     <NoWarn>$(NoWarn);419;AZC0001</NoWarn>
     <GenerateAPIListing>true</GenerateAPIListing>
@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <!-- These packages are included as part net6.0; the external references are not needed. -->
-  <ItemGroup Condition="'$(TargetFramework)' != 'net6.0'">
+  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1'">
     <PackageReference Include="System.Text.Json" />
     <PackageReference Include="System.Text.Encodings.Web" />
   </ItemGroup>
